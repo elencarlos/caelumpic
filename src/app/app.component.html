@@ -4,7 +4,10 @@
 <main class="container">
     <div class="row">
         <div class="col-md-3 col-sm-6" *ngFor="let foto of listaFotos">
-            <foto [url]="foto.url" [descricao]="foto.descricao"></foto>
+            <app-painel [titulo]="foto.titulo">
+                <app-foto [url]="foto.url" [descricao]="foto.titulo"></app-foto>
+            </app-painel>
+
         </div>
     </div>
 </main>

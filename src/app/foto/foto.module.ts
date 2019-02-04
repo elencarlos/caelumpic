@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { FotoComponent } from './foto.component';
 
 @NgModule({
@@ -10,4 +10,5 @@ import { FotoComponent } from './foto.component';
   ]
 })
 
-export class FotoModule { }
+export class FotoModule {
+}
