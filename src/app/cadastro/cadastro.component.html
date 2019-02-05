@@ -17,10 +17,10 @@
                         <label for="">Titulo</label>
                         <input type="text" class="form-control"
                             name="titulo" formControlName="titulo" required>
-                        <div class="alert alert-danger mt-2">
+                        <div *ngIf="titulo.errors?.required" class="alert alert-danger mt-2">
                             Por favor, insira um título.
                         </div>
-                        <div class="alert alert-danger mt-2">
+                        <div *ngIf="titulo.errors?.minlength" class="alert alert-danger mt-2">
                             Título muito pequeno.
                         </div>
                     </div>

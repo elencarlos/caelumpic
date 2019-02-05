@@ -3,7 +3,7 @@ import { FotoComponent } from "../foto/foto.component";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FotoService } from '../foto/foto.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-cadastro',
@@ -25,8 +25,11 @@ export class CadastroComponent implements OnInit {
         private formBuilder: FormBuilder) {
 
         this.formulario = formBuilder.group({
-            titulo: [''],
-            url: [''],
+            titulo: ['', Validators.compose([
+                Validators.required, Validators.minLength(5)
+            ]
+            )],
+            url: ['',Validators.required],
             descricao: ['']
         });
 
@@ -87,6 +90,10 @@ export class CadastroComponent implements OnInit {
                 );
         }
 
+    }
+
+    get titulo(){
+        return this.formulario.get('titulo');
     }
 
 }
