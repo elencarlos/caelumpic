@@ -2,6 +2,9 @@
     <h1>{{ title }}</h1>
 </div>
 <main class="container">
+    <div *ngIf="mensagem">
+        <p class="alert alert-danger"> {{mensagem}}</p>
+    </div>
     <div class="nav">
         <a [routerLink]="['cadastro']" class="btn btn-primary mb-5">Novo Foto</a>
     </div>
@@ -9,8 +12,9 @@
         <div class="col-md-3 col-sm-6" *ngFor="let foto of listaFotos">
             <app-painel [titulo]="foto.titulo">
                 <app-foto [url]="foto.url" [descricao]="foto.titulo"></app-foto>
+                <button (click)="remover(foto)" class="btn btn-danger">Remover</button>
+                <a [routerLink]="['editar',foto._id]" class="btn btn-primary">Editar</a>
             </app-painel>
         </div>
     </div>
 </main>
-

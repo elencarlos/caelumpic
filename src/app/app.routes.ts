@@ -12,6 +12,10 @@ const rotas: Routes = [
         component: CadastroComponent
     },
     {
+        path: 'editar/:fotoId',
+        component: CadastroComponent
+    },
+    {
         path: '**',
         redirectTo: ''
     }

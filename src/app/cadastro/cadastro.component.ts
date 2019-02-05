@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from "../foto/foto.component";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FotoService } from '../foto/foto.service';
 
 @Component({
@@ -15,7 +15,23 @@ export class CadastroComponent implements OnInit {
 
     foto = new FotoComponent();
 
-    constructor(private fotoService: FotoService, private router: Router) {
+    constructor(
+        private fotoService: FotoService,
+        private router: Router,
+        private activeRoute: ActivatedRoute) {
+        this.activeRoute.params.subscribe(
+            params => { 
+                this.fotoService.obterFoto(params.fotoId)
+                    .subscribe(
+                        fotoApi => {
+                            this.foto = fotoApi
+                        },
+                        erro => {
+                            console.log('não é possivel editar', erro)
+                        }
+                    ); 
+            }
+        );
     }
 
     ngOnInit() {
