@@ -8,8 +8,8 @@
             <a [routerLink]="['']" class="btn btn-primary mb-5">Listagem</a>
         </div>
         <div class="row">
-            <div class="col-md-8">
-                <form (submit)="salvar($event)">
+            <div class="col-md-6">
+                <form (ngSubmit)="salvar()">
                     <div class="form-group">
                         <label for="">Titulo</label>
                         <input type="text" class="form-control" [(ngModel)]="foto.titulo" name="titulo">
@@ -27,10 +27,12 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <aside>
                     <h3>Preview</h3>
-                    <app-painel [titulo]="foto.titulo"></app-painel>
+                    <app-painel [titulo]="foto.titulo">
+                        <app-foto [url]="foto.url" [descricao]="foto.titulo"></app-foto>
+                    </app-painel>
                 </aside>
             </div>
         </div>
