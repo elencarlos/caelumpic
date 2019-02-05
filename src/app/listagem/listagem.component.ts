@@ -25,14 +25,14 @@ export class ListagemComponent {
 
     remover(foto) {
         this.api.deletar(foto).subscribe(
-            resposta => {
-                this.mensagem = 'removi a foto' + foto._id;
-                setTimeout(()=>{
-                    this.mensagem = null;
-                },5000);         
+            mensagemApi => {                     
                 this.listaFotos = this.listaFotos.filter(
                     fotoDaLista => fotoDaLista._id != foto._id
                 );
+                this.mensagem = mensagemApi.mensagem;
+                setTimeout(()=>{
+                    this.mensagem = null;
+                },5000);    
             },
             erro => console.log('deu ruim', erro)
         );

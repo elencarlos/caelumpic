@@ -2,6 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FotoComponent } from './foto.component';
 import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators'
 
 @Injectable({providedIn: 'root'})
 export class FotoService {
@@ -20,14 +21,34 @@ export class FotoService {
     }
 
     salvar(foto){
-        return this.api.post(this.url,foto,this.cabecalhos);
+        return this.api.post(this.url,foto,this.cabecalhos)
+        .pipe(map(
+            ()=>({mensagem: 'Foto salva com sucesso'})
+        ));
+    }
+
+    editar(foto){
+        return this.api.put(this.url+foto._id,foto,this.cabecalhos)
+        .pipe(map(
+            ()=>({mensagem: 'Foto atualizada com sucesso'})
+        ));
     }
 
     deletar(foto){
-        return this.api.delete(this.url+foto._id);
+        return this.api.delete(this.url+foto._id)
+        .pipe(map(
+            ()=>({
+                mensagem: 'Foto removida com sucesso'
+            })
+        ));
     }
 
     obterFoto(id) : Observable<FotoComponent> {
         return this.api.get<FotoComponent>(this.url + id);
+    }
+}
+
+export class MensagemService{
+    constructor(readonly mensagem: string){
     }
 }

@@ -4,26 +4,37 @@
 
 <main>
     <div class="container">
+        <div *ngIf='mensagem'>
+            <app-mensagem tipo='success'>{{mensagem}}</app-mensagem>
+        </div>
         <div class="nav">
             <a [routerLink]="['']" class="btn btn-primary mb-5">Listagem</a>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <form (ngSubmit)="salvar()">
+                <form [formGroup]="formulario" (ngSubmit)="salvar()">
                     <div class="form-group">
                         <label for="">Titulo</label>
-                        <input type="text" class="form-control" [(ngModel)]="foto.titulo" name="titulo">
+                        <input type="text" class="form-control"
+                            name="titulo" formControlName="titulo" required>
+                        <div class="alert alert-danger mt-2">
+                            Por favor, insira um título.
+                        </div>
+                        <div class="alert alert-danger mt-2">
+                            Título muito pequeno.
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">url</label>
-                        <input type="text" class="form-control" [(ngModel)]="foto.url" name="url">
+                        <input required type="text" class="form-control" formControlName='url' name="url">
                     </div>
                     <div class="form-group">
                         <label for="">Descricão</label>
-                        <textarea class="form-control" [(ngModel)]="foto.descricao" name="descricao"></textarea>
+                        <textarea class="form-control" formControlName="descricao" name="descricao"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn-success btn">Salvar</button>
+                        <button [disabled]="formulario.invalid" type="submit" class="btn-success btn">Salvar
+                        </button>
                     </div>
                 </form>
             </div>

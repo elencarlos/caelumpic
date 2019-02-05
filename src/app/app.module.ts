@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {FotoModule} from './foto/foto.module';
@@ -9,12 +9,15 @@ import {PainelModule} from './painel/painel.module';
 import { ListagemComponent } from './listagem/listagem.component';
 import {roteamento} from "./app.routes";
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { MensagemComponent } from './mensagem/mensagem.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         ListagemComponent,
-        CadastroComponent
+        CadastroComponent,
+        MensagemComponent
     ],
     imports: [
         BrowserModule,
@@ -22,7 +25,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
         PainelModule,
         HttpClientModule,
         roteamento,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

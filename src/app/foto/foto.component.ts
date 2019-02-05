@@ -13,4 +13,6 @@ export class FotoComponent {
 
     @Input()
     descricao='';
+    
+    _id;
 }
