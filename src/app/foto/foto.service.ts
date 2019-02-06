@@ -17,7 +17,7 @@ export class FotoService {
     constructor(private api: HttpClient){}
 
     listar(){
-        return (this.api.get(this.url));
+        return (this.api.get<FotoComponent>(this.url));
     }
 
     salvar(foto){

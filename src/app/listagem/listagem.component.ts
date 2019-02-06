@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FotoService } from '../foto/foto.service';
+import { FotoComponent } from '../foto/foto.component';
 
 @Component({
     selector: 'app-listagem',
@@ -9,7 +10,7 @@ import { FotoService } from '../foto/foto.service';
 export class ListagemComponent {
 
     title = "Galeria de Fotos Aleatórias";
-    listaFotos;
+    listaFotos: FotoComponent[] = [];
     mensagem;
 
     constructor(private api: FotoService) {

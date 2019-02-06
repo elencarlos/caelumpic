@@ -2,6 +2,7 @@
     <h1>{{ title }}</h1>
 </div>
 <main class="container">
+
     <div *ngIf="mensagem">
         <app-mensagem>{{mensagem}}</app-mensagem>
     </div>
@@ -9,7 +10,10 @@
         <a [routerLink]="['cadastro']" class="btn btn-primary mb-5">Novo Foto</a>
     </div>
     <div class="row">
-        <div class="col-md-3 col-sm-6" *ngFor="let foto of listaFotos">
+        <div class="col-md-10">
+            <input (input)="0" #inputPesquisa type="text" class="form-control" placeholder="pesquise ...">
+        </div>
+        <div class="col-md-3 col-sm-6" *ngFor="let foto of listaFotos | filtraPorTitulo:inputPesquisa.value">
             <app-painel [titulo]="foto.titulo">
                 <app-foto [url]="foto.url" [descricao]="foto.titulo"></app-foto>
                 <button (click)="remover(foto)" class="btn btn-danger">Remover</button>
